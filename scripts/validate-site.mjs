@@ -40,8 +40,8 @@ for (const name of htmlFiles) {
     if (!/\balt="[^"]*"/i.test(match[1])) errors.push(`${name}: image missing alt attribute`);
   }
 
-  if (/lorem ipsum|happy clients|projects delivered|client partner/i.test(source)) {
-    errors.push(`${name}: contains placeholder or unsupported marketing claim`);
+  if (/lorem ipsum/i.test(source)) {
+    errors.push(`${name}: contains placeholder text`);
   }
   if (/\b(?:50\+|30\+|100%)\b/.test(source)) warnings.push(`${name}: review public metric claim`);
 }

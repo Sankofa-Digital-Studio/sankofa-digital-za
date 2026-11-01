@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="Sankofa Bird Emblem">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe082" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+  <!-- Tail feathers fanned out -->
+  <path d="M 30,55 C 24,52 14,56 12,65 C 10,72 17,76 25,73 C 27,67 29,61 30,55 Z" fill="url(#goldGrad)" opacity="0.9" />
+  <path d="M 27,62 C 20,62 12,69 13,78 C 15,85 24,86 31,80 C 31,74 29,68 27,62 Z" fill="url(#goldGrad)" opacity="0.8" />
+  <path d="M 32,71 C 26,75 19,83 23,91 C 27,97 37,94 40,84 C 37,79 34,75 32,71 Z" fill="url(#goldGrad)" opacity="0.95" />
+  <!-- Bird Body -->
+  <path d="M 40,48 C 30,55 30,78 48,82 C 64,85 76,75 75,58 C 74,45 63,38 52,38 C 45,38 41,43 40,48 Z" fill="url(#goldGrad)" />
+  <!-- Wing Adinkra Geometry Cutouts -->
+  <path d="M 45,55 C 40,58 40,68 47,72 C 55,75 65,70 65,60 C 65,52 56,48 48,50 Z" fill="#090a0b" />
+  <circle cx="53" cy="61" r="4.5" fill="url(#goldGrad)" />
+  <rect x="58" y="55" width="4" height="10" rx="1.5" fill="url(#goldGrad)" />
+  <rect x="44" y="57" width="3.5" height="7" rx="1" fill="url(#goldGrad)" />
+  <!-- Elegant backward-turned Neck and Head -->
+  <path d="M 54,39 C 64,39 74,32 74,22 C 74,12 62,8 52,14 C 44,19 44,28 49,32 C 51,34 53,37 54,39 Z" fill="url(#goldGrad)" />
+  <!-- Eye -->
+  <circle cx="60" cy="18" r="2.2" fill="#090a0b" />
+  <!-- Beak & Egg -->
+  <path d="M 68,20 L 75,23 L 69,25 Z" fill="url(#goldGrad)" />
+  <ellipse cx="76" cy="27" rx="4" ry="5.5" fill="url(#goldGrad)" stroke="#ffd54f" stroke-width="1" />
+  <!-- Sturdy Perched Legs -->
+  <path d="M 50,82 L 48,93 L 42,95 M 48,93 L 49,95 M 48,93 L 54,95" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 62,80 L 64,93 L 58,95 M 64,93 L 65,95 M 64,93 L 70,95" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
