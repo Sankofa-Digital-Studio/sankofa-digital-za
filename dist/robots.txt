@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sankofa-digital-za.regalsnail34.chatgpt.site/sitemap.xml
