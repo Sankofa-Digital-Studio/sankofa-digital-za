@@ -3,25 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sankofa Digital is a technology studio that builds powerful digital solutions rooted in purpose, innovation and impact.">
-  <meta name="theme-color" content="#070808">
-  <meta property="og:title" content="Sankofa Digital ZA | Technology Studio">
-  <meta property="og:description" content="Go back. Build wisely. Move forward. Custom software, web, mobile and cloud platforms rooted in heritage and driven by purpose.">
+  <meta name="description" content="Sankofa Digital is a sovereign African product engineering studio. Rooted in ancestral wisdom, building high-resilience custom platforms, learning systems and operational software.">
+  <meta name="theme-color" content="#050606">
+  <meta property="og:title" content="Sankofa Digital ZA | Sovereign African Product Engineering">
+  <meta property="og:description" content="Go back. Build wisely. Move forward. Custom software architecture rooted in African context, built by sons of the soil for uncompromising real-world operations.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/hero-visual.webp">
-  <title>Sankofa Digital ZA | Go Back. Build Wisely. Move Forward.</title>
+  <title>Sankofa Digital ZA | Sons of the Soil. Sovereign Software.</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
+  <!-- 1. Top Scroll Progress Indicator -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div id="scrollProgressBar" class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- 2. Interactive Page Loader with Sankofa Emblem Spinner -->
+  <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading studio experience">
+    <div class="loader-content">
+      <div class="spinner-container">
+        <div class="spinner-ring"></div>
+        <img class="spinner-emblem" src="assets/icons/sankofa-bird.svg" alt="Sankofa Emblem" width="44" height="44">
+      </div>
+      <div class="loader-brand">SANKOFA DIGITAL</div>
+      <div class="loader-tagline">Sons of the Soil • Sovereign Code</div>
+      <div class="loader-bar-shell" aria-hidden="true">
+        <div class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Floating Button -->
+  <button id="backToTopBtn" class="back-to-top" type="button" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Navigation -->
   <header class="site-header" data-header>
     <div class="container nav-shell">
       <a class="brand" href="index.html" aria-label="Sankofa Digital ZA home">
-        <img class="brand-logo-svg" src="assets/icons/logo-mark.svg" alt="Sankofa Digital Emblem" width="42" height="42">
+        <img class="brand-logo-svg" src="assets/icons/logo-mark.svg" alt="Sankofa Digital Emblem" width="44" height="44">
         <span class="brand-copy">
           <strong>SANKOFA DIGITAL</strong>
           <small>ZA</small>
@@ -54,8 +79,8 @@
       <div class="container hero-epic-grid">
         <div class="hero-epic-copy reveal">
           <div class="hero-emblem-badge">
-            <img src="assets/icons/sankofa-bird.svg" alt="Sankofa bird icon" width="22" height="22">
-            <span>Heritage • Innovation • Impact</span>
+            <img src="assets/icons/sankofa-bird.svg" alt="" width="22" height="22">
+            <span>Sons of the Soil • Sovereign Code</span>
           </div>
 
           <h1>
@@ -64,40 +89,72 @@
             Move forward.
           </h1>
 
+          <div class="hero-proverb">
+            "<em>Se wo were fi na wosankofa a yenkyi</em>" — It is not a taboo to return for what you forgot.
+          </div>
+
           <p class="lede">
-            Sankofa Digital is a technology studio that builds powerful digital solutions rooted in purpose, innovation and impact.
+            We are not consumers of foreign digital templates. As sons of the African soil, we retrieve the deep wisdom of our past and engineer custom, uncompromising software architecture built for real operational realities.
           </p>
 
           <div class="button-row">
-            <a class="button" href="#solutions">Our Services <span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="#work">View Our Work <span aria-hidden="true">▶</span></a>
+            <a class="button" href="#solutions">Explore Custom Systems <span aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="#roots">The Meaning of Sankofa <span aria-hidden="true">↓</span></a>
           </div>
         </div>
 
         <div class="hero-epic-visual reveal">
           <img class="hero-bg-img" src="assets/images/hero-visual.webp" alt="African heritage and technology artwork combining a portrait, acacia tree and digital interfaces" width="1600" height="900">
           
-          <!-- Code terminal card overlay -->
-          <div class="hero-code-overlay" aria-hidden="true">
-            <div class="code-line-fn">function build() {</div>
-            <div class="code-line-ret">return impact;</div>
-            <div>}</div>
-            <div class="code-line-let">let legacy = true;<span class="code-cursor"></span></div>
+          <!-- Interactive Compiler Terminal on Hero -->
+          <div class="hero-terminal-card" aria-label="Live Custom Engine Compiler">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+              </div>
+              <span class="terminal-title">sankofa-kernel // custom-engine.ts</span>
+              <span id="compilerPill" class="compiler-pill ready">RUNTIME READY</span>
+            </div>
+
+            <div class="terminal-body">
+              <div class="code-comment">// Ancestral wisdom synthesized into modern resilient software</div>
+              <div><span class="code-fn">async function</span> <span class="code-var">sankofaBuild</span>(<span class="code-var">context</span>: <span class="code-str">SoilHeritage</span>) {</div>
+              <div class="code-indent"><span class="code-fn">const</span> ancestralLessons = <span class="code-fn">await</span> context.<span class="code-var">retrievePast</span>();</div>
+              <div class="code-indent"><span class="code-fn">const</span> customArchitecture = <span class="code-fn">new</span> <span class="code-var">Engine</span>({ noTemplates: <span class="code-str">true</span> });</div>
+              <div class="code-indent"><span class="code-fn">return</span> customArchitecture.<span class="code-var">deployToAfrica</span>(ancestralLessons);</div>
+              <div>}</div>
+            </div>
+
+            <div class="terminal-action-bar">
+              <button id="runCodeBtn" class="btn-run-code" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Run Build Engine</span>
+              </button>
+              <span style="font-size: .72rem; color: #8e8b83; font-family: var(--mono);">100% Native Architecture</span>
+            </div>
+
+            <div id="codeOutput" class="terminal-output">
+              <div id="terminalLogs">
+                <div class="terminal-line"><span class="log-dim">[system]</span> Interactive runtime initialized. Click "Run Build Engine" to execute custom logic.</div>
+              </div>
+            </div>
           </div>
 
           <!-- Feature chips strip -->
           <div class="hero-chips-strip">
             <div class="hero-chip">
               <img src="assets/icons/icon-web.svg" alt="" width="22" height="22">
-              <div><strong>Web & Apps</strong><span>Modern stacks</span></div>
+              <div><strong>Bespoke Frontend</strong><span>Pure CSS &amp; TypeScript</span></div>
             </div>
             <div class="hero-chip">
               <img src="assets/icons/icon-cloud.svg" alt="" width="22" height="22">
-              <div><strong>Cloud & Scale</strong><span>Secure backends</span></div>
+              <div><strong>Sovereign Cloud</strong><span>Zero vendor lock-in</span></div>
             </div>
             <div class="hero-chip">
               <img src="assets/icons/icon-analytics.svg" alt="" width="22" height="22">
-              <div><strong>Intelligence</strong><span>Driven by data</span></div>
+              <div><strong>African Context</strong><span>Built for low connectivity</span></div>
             </div>
           </div>
         </div>
@@ -106,6 +163,134 @@
 
     <!-- Glowing Laser Horizon Divider -->
     <div class="laser-divider" aria-hidden="true"></div>
+
+    <!-- ROOTED IN TRUTH: WHY WE ARE SONS OF THE SOIL & THE MEANING OF SANKOFA -->
+    <section id="roots" class="section-roots-manifesto">
+      <div class="container roots-manifesto-grid">
+        <div class="roots-narrative reveal">
+          <p class="eyebrow">Identity &amp; Philosophy</p>
+          <h2>We are not an aesthetic.<br><span class="gold-gradient-text">We are sons of the soil.</span></h2>
+          <p>
+            Too much modern software on our continent borrows African patterns as superficial wallpaper while importing fragile, foreign codebases that collapse under African constraints: intermittent power, spotty cellular networks, and legacy institutional inertia.
+          </p>
+          <p>
+            <strong>That is not who we are.</strong> We are indigenous African software engineers who understand both the soil we stand on and the mathematical rigor of high-performance distributed systems. 
+          </p>
+          <p>
+            When we say <em>Sankofa</em>, we invoke an ancient Akan epistemological principle: knowledge must never be discarded simply because it is old, and modern systems must never be built blindly without honoring historical evidence.
+          </p>
+          
+          <div class="button-row">
+            <a class="button" href="about.html">Read Our Full Manifesto <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="sankofa-card-box reveal">
+          <div class="proverb-header">
+            <img src="assets/icons/sankofa-bird.svg" alt="Sankofa emblem" width="36" height="36">
+            <div>
+              <h3>The Sacred Anatomy of Sankofa</h3>
+              <span>Akan Epistemology &amp; Software Design</span>
+            </div>
+          </div>
+
+          <div class="proverb-breakdown">
+            <div class="proverb-item">
+              <div class="proverb-item-icon">01</div>
+              <div>
+                <strong>The Backward-Turned Head</strong>
+                <p>Respect for existing workflows. Before writing a line of code, we investigate current paper records, informal workarounds, and user history.</p>
+              </div>
+            </div>
+
+            <div class="proverb-item">
+              <div class="proverb-item-icon">02</div>
+              <div>
+                <strong>The Precious Golden Egg</strong>
+                <p>The core wisdom and value. We extract what worked historically in your organization and preserve it inside the new digital foundation.</p>
+              </div>
+            </div>
+
+            <div class="proverb-item">
+              <div class="proverb-item-icon">03</div>
+              <div>
+                <strong>The Forward-Facing Feet</strong>
+                <p>Relentless forward execution. While our gaze evaluates the lessons of the past, our build momentum pushes forward into scalable modern technology.</p>
+              </div>
+            </div>
+
+            <div class="proverb-item">
+              <div class="proverb-item-icon">04</div>
+              <div>
+                <strong>Rooted in the Soil</strong>
+                <p>Resilient under African operating conditions: low latency, offline-first data synchronization, role accountability, and robust security.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOM INGENUITY VS TEMPLATE BUILDERS -->
+    <section class="section-engineering-depth">
+      <div class="container">
+        <div class="depth-header reveal">
+          <p class="eyebrow">Engineering Authenticity</p>
+          <h2>Custom ingenuity vs. <em>cookie-cutter templates</em></h2>
+          <p>
+            If a development agency sells you a bloated WordPress theme or generic template builder, they are middlemen. Here is why Sankofa Digital builds custom systems from the ground up:
+          </p>
+        </div>
+
+        <div class="comparison-grid reveal">
+          <!-- The Template Middleman -->
+          <div class="compare-col template-way">
+            <span class="compare-badge">Generic Template Approach</span>
+            <h3>The Bloated Middleman</h3>
+            <p class="summary">Relies on drag-and-drop builders, 45 unvetted plugins, sluggish load times, and rigid workflows.</p>
+            <ul class="compare-list">
+              <li><span class="icon-cross">✕</span> Hundreds of unused CSS and JavaScript dependencies slowing down mobile page loads.</li>
+              <li><span class="icon-cross">✕</span> Vulnerable third-party plugins that fail security audits and break on update.</li>
+              <li><span class="icon-cross">✕</span> Cannot adapt to complex organizational rules, audits, or field offline requirements.</li>
+              <li><span class="icon-cross">✕</span> Vendor lock-in on proprietary builder platforms that hold your business data hostage.</li>
+            </ul>
+          </div>
+
+          <!-- The Sankofa Sovereign Way -->
+          <div class="compare-col sankofa-way">
+            <span class="compare-badge">Sankofa Custom Engineering</span>
+            <h3>Sovereign Custom Craft</h3>
+            <p class="summary">Clean, hand-crafted architecture built specifically for your domain, users, and performance thresholds.</p>
+            <ul class="compare-list">
+              <li><span class="icon-check">✓</span> <strong>Zero Bloat:</strong> Lightweight semantic HTML, custom CSS design system, and lightning-fast load times.</li>
+              <li><span class="icon-check">✓</span> <strong>Hardened Security:</strong> Role-based access control, cryptographic audit logs, and privacy governance.</li>
+              <li><span class="icon-check">✓</span> <strong>African Resilience:</strong> Works flawlessly on mobile phones, low-bandwidth 3G, and intermittent connectivity.</li>
+              <li><span class="icon-check">✓</span> <strong>Total Ownership:</strong> You own 100% of the source code, data schema, and deployment pipeline.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Technical Capabilities Matrix -->
+        <div class="capabilities-matrix reveal">
+          <div class="cap-item">
+            <strong>Distributed Architecture</strong>
+            <span>Event-driven backends with PostgreSQL, Node.js, and high-concurrency microservices.</span>
+          </div>
+          <div class="cap-item">
+            <strong>Offline-First Synchronization</strong>
+            <span>IndexedDB and local caching that keeps field operations running during network blackouts.</span>
+          </div>
+          <div class="cap-item">
+            <strong>POPIA &amp; Data Governance</strong>
+            <span>Strict South African privacy compliance built natively into schema boundaries.</span>
+          </div>
+          <div class="cap-item">
+            <strong>Native Hardware Hooks</strong>
+            <span>PWA and mobile integrations for cameras, GPS geofencing, and biometric authentication.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- SOLUTIONS THAT EMPOWER -->
     <section id="solutions" class="section-solutions">
@@ -155,7 +340,7 @@
             <div class="solution-icon-wrap">
               <img src="assets/icons/icon-analytics.svg" alt="Data and Analytics" width="26" height="26">
             </div>
-            <h3>Data & Analytics</h3>
+            <h3>Data &amp; Analytics</h3>
             <p>Turn data into actionable insights that inform decisions and drive continuous growth.</p>
             <span class="arrow-link" aria-hidden="true">→</span>
           </a>
@@ -283,7 +468,7 @@
       </div>
     </section>
 
-    <!-- STATS & TESTIMONIAL SECTION -->
+    <!-- STATS & TESTIMONIAL SECTION (DYNAMIC COUNTERS) -->
     <section class="section-stats">
       <div class="container stats-split-grid">
         <div class="stats-quad reveal">
@@ -292,7 +477,7 @@
               <img src="assets/icons/icon-projects.svg" alt="Projects icon" width="22" height="22">
             </div>
             <div>
-              <div class="stat-value">50+</div>
+              <div class="stat-value" data-target-count="50" data-suffix="+">50+</div>
               <div class="stat-label">Projects Delivered</div>
             </div>
           </div>
@@ -302,7 +487,7 @@
               <img src="assets/icons/icon-clients.svg" alt="Clients icon" width="22" height="22">
             </div>
             <div>
-              <div class="stat-value">30+</div>
+              <div class="stat-value" data-target-count="30" data-suffix="+">30+</div>
               <div class="stat-label">Happy Clients</div>
             </div>
           </div>
@@ -312,7 +497,7 @@
               <img src="assets/icons/icon-industries.svg" alt="Industries icon" width="22" height="22">
             </div>
             <div>
-              <div class="stat-value">5+</div>
+              <div class="stat-value" data-target-count="5" data-suffix="+">5+</div>
               <div class="stat-label">Industries Served</div>
             </div>
           </div>
@@ -322,7 +507,7 @@
               <img src="assets/icons/icon-commitment.svg" alt="Commitment badge icon" width="22" height="22">
             </div>
             <div>
-              <div class="stat-value">100%</div>
+              <div class="stat-value" data-target-count="100" data-suffix="%">100%</div>
               <div class="stat-label">Commitment</div>
             </div>
           </div>
@@ -438,7 +623,7 @@
             <small>ZA</small>
           </span>
         </a>
-        <p>Go back. Build wisely. Move forward.</p>
+        <p>Sovereign African software engineering. Go back. Build wisely. Move forward.</p>
         <div class="footer-social-row">
           <a class="footer-social-btn" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <img src="assets/icons/icon-facebook.svg" alt="" width="18" height="18">
@@ -488,7 +673,7 @@
       <div class="footer-col">
         <h3>Let's Build Together</h3>
         <p style="font-size: .86rem; color: #a29f96; margin: 0 0 .8rem;">
-          Have a project in mind or just want to chat? We'd love to hear from you.
+          Have a problem that demands bespoke engineering? Speak directly with the studio.
         </p>
         <div class="footer-contact-items">
           <div class="footer-contact-item">
@@ -515,7 +700,7 @@
 
     <!-- Footer Bottom -->
     <div class="container footer-bottom">
-      <div>© <span data-year>2026</span> Sankofa Digital ZA. All rights reserved.</div>
+      <div>© <span data-year>2026</span> Sankofa Digital ZA. Sons of the soil. All rights reserved.</div>
       <div style="display: flex; gap: 1.5rem;">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
