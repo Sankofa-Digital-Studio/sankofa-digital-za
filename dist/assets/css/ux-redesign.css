@@ -155,6 +155,7 @@ body {
 .team-initials { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border: 1px solid var(--ux-line); border-radius: 50%; color: var(--ux-gold); font-weight: 800; letter-spacing: .08em; background: rgba(232,163,29,.1); }
 .team-card h3 { margin: 0; }
 .team-role { margin: .35rem 0 .9rem; color: var(--ux-gold); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.team-education { margin: 0 0 .8rem; color: #f1eadf; font-size: .9rem; font-weight: 700; }
 .team-card p:last-child { margin: 0; color: var(--ux-muted); line-height: 1.7; }
 .ownership-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 .ownership-card { padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: 1rem; }
