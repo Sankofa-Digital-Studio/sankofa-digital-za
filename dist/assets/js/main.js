@@ -9,6 +9,7 @@ const nav = document.querySelector('[data-nav]');
 const progressBar = document.getElementById('scrollProgressBar');
 const pageLoader = document.getElementById('pageLoader');
 const backToTopBtn = document.getElementById('backToTopBtn');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // 1. GLOBAL INITIALIZATION & PAGE LOADER
 window.addEventListener('DOMContentLoaded', () => {
@@ -18,12 +19,15 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // Fade out loader smoothly once DOM is ready or window loads
-  setTimeout(() => {
+  const finishLoading = () => {
     if (pageLoader) {
       pageLoader.classList.add('loaded');
       setTimeout(() => pageLoader.remove(), 600);
     }
-  }, 450);
+  };
+
+  if (reduceMotion) finishLoading();
+  else setTimeout(finishLoading, 450);
 });
 
 // Fallback in case DOMContentLoaded already fired
@@ -71,6 +75,7 @@ menuToggle?.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', String(!open));
   nav?.classList.toggle('open', !open);
   document.body.classList.toggle('menu-open', !open);
+  if (!open) nav?.querySelector('a')?.focus();
 });
 
 nav?.querySelectorAll('a').forEach((link) => {
@@ -79,6 +84,15 @@ nav?.querySelectorAll('a').forEach((link) => {
     menuToggle?.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
   });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && nav?.classList.contains('open')) {
+    nav.classList.remove('open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    menuToggle?.focus();
+  }
 });
 
 // 4. INTERSECTION OBSERVER FOR REVEALS & STAT COUNTERS
@@ -100,7 +114,11 @@ if ('IntersectionObserver' in window) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const counterEl = entry.target;
-        animateCounter(counterEl);
+        if (reduceMotion) {
+          counterEl.textContent = counterEl.getAttribute('data-target-count') + (counterEl.getAttribute('data-suffix') || '');
+        } else {
+          animateCounter(counterEl);
+        }
         counterObserver.unobserve(counterEl);
       }
     });

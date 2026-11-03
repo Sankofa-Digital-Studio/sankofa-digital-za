@@ -1,0 +1,101 @@
+/* Sankofa Digital ZA UX/UI redesign layer.
+   Keeps the established visual identity while prioritising comprehension,
+   evidence, keyboard access and the discovery-enquiry path. */
+:root {
+  --ux-gold: #e8a31d;
+  --ux-ink: #070808;
+  --ux-paper: #f4efe6;
+  --ux-muted: #b9b3a9;
+  --ux-line: rgba(232, 163, 29, .24);
+}
+
+html { scroll-behavior: smooth; }
+body { text-rendering: optimizeLegibility; }
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--ux-gold);
+  outline-offset: 4px;
+}
+
+.skip-link:focus-visible { z-index: 1000; }
+
+.hero-epic-copy .lede { max-width: 42rem; font-size: clamp(1.05rem, 1.4vw, 1.3rem); }
+.hero-epic-copy .button-row { margin-top: 1.8rem; }
+
+.decision-strip {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  background: #101413;
+  border-top: 1px solid var(--ux-line);
+  border-bottom: 1px solid var(--ux-line);
+}
+
+.decision-strip-inner { display: grid; gap: 1.5rem; }
+.decision-strip-heading { max-width: 42rem; }
+.decision-strip-heading h2 { margin-bottom: .8rem; }
+.decision-strip-heading p { color: var(--ux-muted); max-width: 40rem; }
+.decision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.decision-card {
+  padding: 1.3rem;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 1rem;
+  background: rgba(255,255,255,.035);
+}
+.decision-card strong { display: block; color: #fff; margin-bottom: .45rem; }
+.decision-card p { margin: 0; color: var(--ux-muted); font-size: .94rem; line-height: 1.65; }
+
+.section-heading > p { max-width: 38rem; }
+.service-card, .evidence-item, .case-card { transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+.service-card:hover, .evidence-item:hover, .case-card:hover { transform: translateY(-3px); border-color: var(--ux-line); }
+.service-card .fine-print { display: block; margin-top: 1rem; color: var(--ux-gold); }
+
+.proof-ledger { padding: clamp(2.5rem, 6vw, 5rem) 0; background: #0d1110; }
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.proof-card { padding: 1.5rem; border: 1px solid rgba(255,255,255,.13); border-radius: 1rem; background: rgba(255,255,255,.035); }
+.proof-card .tag { margin-bottom: 1rem; }
+.proof-card h3 { margin: .4rem 0 .65rem; }
+.proof-card p { color: var(--ux-muted); margin: 0; line-height: 1.7; }
+.proof-card dl { display: grid; grid-template-columns: max-content 1fr; gap: .45rem .8rem; margin: 1.2rem 0 0; font-size: .88rem; }
+.proof-card dt { color: var(--ux-gold); font-weight: 700; }
+.proof-card dd { color: #ddd7cc; margin: 0; }
+
+.trust-note { margin-top: 1.5rem; padding: 1rem 1.2rem; border-left: 3px solid var(--ux-gold); background: rgba(232,163,29,.07); color: #ded8ce; }
+.trust-note strong { color: #fff; }
+
+.section-stats { display: none; }
+.footer-social-row { display: none !important; }
+.footer-col-brand p { max-width: 26rem; }
+
+.contact-form { align-self: start; }
+.contact-form .form-actions { align-items: stretch; }
+.form-status { min-height: 1.5rem; color: var(--ux-gold); }
+.fine-print { line-height: 1.55; }
+
+.page-hero .lede { max-width: 48rem; }
+.page-hero .crumbs a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
+
+@media (max-width: 860px) {
+  .decision-grid, .proof-grid { grid-template-columns: 1fr; }
+  .decision-card, .proof-card { padding: 1.2rem; }
+  .hero-terminal-card { order: 2; }
+}
+
+@media (max-width: 560px) {
+  .decision-strip { padding: 2.4rem 0; }
+  .decision-strip-heading h2 { font-size: 1.75rem; }
+  .button-row .button { width: 100%; justify-content: center; }
+  .contact-form .form-actions { display: grid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
