@@ -149,6 +149,22 @@ body {
 .proof-card dd { color: #ddd7cc; margin: 0; }
 .case-card .case-copy h2 { margin: 0; font-size: clamp(1.2rem, 2.5vw, 2rem); }
 .process-grid h2 { margin: .65rem 0 .55rem; font-size: 1.15rem; line-height: 1.2; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.team-card { padding: 1.5rem; border-radius: 1rem; }
+.team-card-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+.team-initials { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border: 1px solid var(--ux-line); border-radius: 50%; color: var(--ux-gold); font-weight: 800; letter-spacing: .08em; background: rgba(232,163,29,.1); }
+.team-card h3 { margin: 0; }
+.team-role { margin: .35rem 0 .9rem; color: var(--ux-gold); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.team-card p:last-child { margin: 0; color: var(--ux-muted); line-height: 1.7; }
+.ownership-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+.ownership-card { padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: 1rem; }
+.ownership-card-main { display: grid; gap: .35rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,.14); }
+.ownership-value { color: var(--ux-gold); font-size: clamp(3rem, 7vw, 5rem); line-height: .9; font-weight: 800; letter-spacing: -.06em; }
+.ownership-label { color: #fff; font-weight: 700; }
+.ownership-card dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 0; }
+.ownership-card dl div { display: grid; gap: .2rem; }
+.ownership-card dt { color: var(--ux-gold); font-weight: 800; }
+.ownership-card dd { margin: 0; color: var(--ux-muted); font-size: .9rem; }
 
 .trust-note { margin-top: 1.5rem; padding: 1rem 1.2rem; border-left: 3px solid var(--ux-gold); background: rgba(232,163,29,.07); color: #ded8ce; }
 .trust-note strong { color: #fff; }
@@ -169,7 +185,8 @@ body {
 .page-hero .crumbs a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
 
 @media (max-width: 860px) {
-  .decision-grid, .proof-grid { grid-template-columns: 1fr; }
+  .decision-grid, .proof-grid, .team-grid { grid-template-columns: 1fr; }
+  .ownership-layout { grid-template-columns: 1fr; gap: 2rem; }
   .decision-card, .proof-card { padding: 1.2rem; }
   .hero-terminal-card { order: 2; }
   .hero-epic-grid::before { inset: -4rem -2rem; opacity: .2; }

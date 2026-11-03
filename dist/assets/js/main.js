@@ -13,6 +13,19 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 // 1. GLOBAL INITIALIZATION & PAGE LOADER
 window.addEventListener('DOMContentLoaded', () => {
+  // Keep the public navigation consistent as the site grows.
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('[data-nav]').forEach((menu) => {
+    if (!menu.querySelector('a[href="team.html"]')) {
+      const teamLink = document.createElement('a');
+      teamLink.href = 'team.html';
+      teamLink.textContent = 'Team';
+      if (currentPage === 'team.html') teamLink.setAttribute('aria-current', 'page');
+      const aboutLink = menu.querySelector('a[href="about.html"]');
+      aboutLink?.after(teamLink);
+    }
+  });
+
   // Update dynamic year
   document.querySelectorAll('[data-year]').forEach((element) => {
     element.textContent = new Date().getFullYear();
