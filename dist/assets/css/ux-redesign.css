@@ -52,6 +52,53 @@ body {
 .hero-epic-copy .lede { max-width: 42rem; font-size: clamp(1.05rem, 1.4vw, 1.3rem); }
 .hero-epic-copy .button-row { margin-top: 1.8rem; }
 
+/* Honeycomb hero composition: the hex grid sits behind the content, while
+   the visual panel takes the shape of a large central cell. */
+.hero-epic-grid {
+  isolation: isolate;
+  overflow: visible;
+}
+.hero-epic-grid::before {
+  content: "";
+  position: absolute;
+  inset: -7rem -9rem;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .34;
+  background-image:
+    linear-gradient(30deg, transparent 12%, rgba(232,163,29,.22) 12.5%, rgba(232,163,29,.22) 13.5%, transparent 14%),
+    linear-gradient(150deg, transparent 12%, rgba(232,163,29,.22) 12.5%, rgba(232,163,29,.22) 13.5%, transparent 14%),
+    linear-gradient(30deg, transparent 86%, rgba(232,163,29,.22) 86.5%, rgba(232,163,29,.22) 87.5%, transparent 88%),
+    linear-gradient(150deg, transparent 86%, rgba(232,163,29,.22) 86.5%, rgba(232,163,29,.22) 87.5%, transparent 88%),
+    linear-gradient(60deg, transparent 24%, rgba(232,163,29,.16) 24.5%, rgba(232,163,29,.16) 25.5%, transparent 26%),
+    linear-gradient(60deg, transparent 74%, rgba(232,163,29,.16) 74.5%, rgba(232,163,29,.16) 75.5%, transparent 76%);
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  background-size: 80px 140px;
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 82%);
+}
+.hero-epic-visual {
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  border-radius: 0;
+  padding: 1.1rem;
+  background: linear-gradient(145deg, rgba(232,163,29,.24), rgba(255,255,255,.05));
+  box-shadow: 0 24px 70px rgba(0,0,0,.42), 0 0 0 1px rgba(232,163,29,.24);
+}
+.hero-epic-visual::before {
+  content: "";
+  position: absolute;
+  inset: .65rem;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: inherit;
+  border: 1px solid rgba(255,255,255,.24);
+}
+.hero-epic-visual img.hero-bg-img,
+.hero-epic-visual .hero-terminal-card,
+.hero-epic-visual .hero-chips-strip {
+  /* Keep the functional content inside the hex cell. */
+}
+
 .decision-strip {
   position: relative;
   z-index: 2;
@@ -115,6 +162,9 @@ body {
   .decision-grid, .proof-grid { grid-template-columns: 1fr; }
   .decision-card, .proof-card { padding: 1.2rem; }
   .hero-terminal-card { order: 2; }
+  .hero-epic-grid::before { inset: -4rem -2rem; opacity: .2; }
+  .hero-epic-visual { clip-path: none; border-radius: var(--radius-lg); padding: 0; }
+  .hero-epic-visual::before { display: none; }
 }
 
 @media (max-width: 560px) {
