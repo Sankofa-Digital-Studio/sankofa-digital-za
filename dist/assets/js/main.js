@@ -2,6 +2,12 @@
 // SANKOFA DIGITAL ZA — INTERACTIVE ENGINEERING SYSTEM
 // ==========================================================================
 
+// Theme preference: dark is the default; Day mode reveals the editorial redesign.
+const savedTheme = (() => {
+  try { return window.localStorage.getItem('sankofa-theme') || 'dark'; } catch { return 'dark'; }
+})();
+document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
 // Global state
 const header = document.querySelector('[data-header]');
 const menuToggle = document.querySelector('[data-menu-toggle]');
@@ -13,6 +19,23 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 // 1. GLOBAL INITIALIZATION & PAGE LOADER
 window.addEventListener('DOMContentLoaded', () => {
+  const themeButtons = document.querySelectorAll('[data-theme-toggle]');
+  const syncThemeControls = () => {
+    const isLight = document.documentElement.dataset.theme === 'light';
+    themeButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(isLight));
+      button.querySelector('[data-theme-label]')?.replaceChildren(document.createTextNode(isLight ? 'Night mode' : 'Day mode'));
+      button.title = isLight ? 'Switch to night mode' : 'Switch to day mode';
+    });
+  };
+  themeButtons.forEach((button) => button.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = nextTheme;
+    try { window.localStorage.setItem('sankofa-theme', nextTheme); } catch { /* preference remains session-only */ }
+    syncThemeControls();
+  }));
+  syncThemeControls();
+
   // Keep the public navigation consistent as the site grows.
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('[data-nav]').forEach((menu) => {
