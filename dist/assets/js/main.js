@@ -131,6 +131,34 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// 3B. HOMEPAGE SYSTEM MAP
+const systemMap = document.querySelector('[data-system-map]');
+if (systemMap) {
+  const offerSection = document.querySelector('.reset-offer');
+  if (offerSection) offerSection.before(systemMap);
+  const stages = {
+    discover: { label: '01 / Discover', status: 'Current state →', title: 'Start with the current state.', copy: 'We map what is really happening: the handoffs, workarounds and quiet dependencies that a requirements document usually misses.', core: 'Your workflow', note: 'the real starting point' },
+    build: { label: '02 / Build', status: 'Focused product →', title: 'Turn insight into a useful increment.', copy: 'The product follows the shape of the work: focused enough to use now, structured enough to grow when the next constraint appears.', core: 'The right product', note: 'shaped around reality' },
+    handover: { label: '03 / Handover', status: 'Owned by you →', title: 'Leave the system stronger than you found it.', copy: 'A clear handover includes working software, known limits and the decisions your team needs to keep moving with confidence.', core: 'Your next step', note: 'clear enough to own' }
+  };
+  const updateSystemMap = (step) => {
+    const stage = stages[step] || stages.discover;
+    systemMap.dataset.step = step;
+    systemMap.querySelector('[data-system-step-label]').textContent = stage.label;
+    systemMap.querySelector('[data-system-status]').textContent = stage.status;
+    systemMap.querySelector('[data-system-title]').textContent = stage.title;
+    systemMap.querySelector('[data-system-copy]').textContent = stage.copy;
+    systemMap.querySelector('[data-system-core]').textContent = stage.core;
+    systemMap.querySelector('[data-system-core-note]').textContent = stage.note;
+    systemMap.querySelectorAll('[data-system-control]').forEach((control) => {
+      const active = control.dataset.systemControl === step;
+      control.classList.toggle('is-active', active);
+      control.setAttribute('aria-selected', String(active));
+    });
+  };
+  systemMap.querySelectorAll('[data-system-control]').forEach((control) => control.addEventListener('click', () => updateSystemMap(control.dataset.systemControl)));
+}
+
 // 4. INTERSECTION OBSERVER FOR REVEALS & STAT COUNTERS
 if ('IntersectionObserver' in window) {
   // Elements reveal
