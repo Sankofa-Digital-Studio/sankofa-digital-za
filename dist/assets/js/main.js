@@ -2,6 +2,12 @@
 // SANKOFA DIGITAL ZA — INTERACTIVE ENGINEERING SYSTEM
 // ==========================================================================
 
+// Theme preference: dark is the default; Day mode reveals the editorial redesign.
+const savedTheme = (() => {
+  try { return window.localStorage.getItem('sankofa-theme') || 'dark'; } catch { return 'dark'; }
+})();
+document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+
 // Global state
 const header = document.querySelector('[data-header]');
 const menuToggle = document.querySelector('[data-menu-toggle]');
@@ -13,6 +19,23 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 // 1. GLOBAL INITIALIZATION & PAGE LOADER
 window.addEventListener('DOMContentLoaded', () => {
+  const themeButtons = document.querySelectorAll('[data-theme-toggle]');
+  const syncThemeControls = () => {
+    const isLight = document.documentElement.dataset.theme === 'light';
+    themeButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(isLight));
+      button.querySelector('[data-theme-label]')?.replaceChildren(document.createTextNode(isLight ? 'Night mode' : 'Day mode'));
+      button.title = isLight ? 'Switch to night mode' : 'Switch to day mode';
+    });
+  };
+  themeButtons.forEach((button) => button.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = nextTheme;
+    try { window.localStorage.setItem('sankofa-theme', nextTheme); } catch { /* preference remains session-only */ }
+    syncThemeControls();
+  }));
+  syncThemeControls();
+
   // Keep the public navigation consistent as the site grows.
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('[data-nav]').forEach((menu) => {
@@ -107,6 +130,34 @@ document.addEventListener('keydown', (event) => {
     menuToggle?.focus();
   }
 });
+
+// 3B. HOMEPAGE SYSTEM MAP
+const systemMap = document.querySelector('[data-system-map]');
+if (systemMap) {
+  const offerSection = document.querySelector('.reset-offer');
+  if (offerSection) offerSection.before(systemMap);
+  const stages = {
+    discover: { label: '01 / Discover', status: 'Current state →', title: 'Start with the current state.', copy: 'We map what is really happening: the handoffs, workarounds and quiet dependencies that a requirements document usually misses.', core: 'Your workflow', note: 'the real starting point' },
+    build: { label: '02 / Build', status: 'Focused product →', title: 'Turn insight into a useful increment.', copy: 'The product follows the shape of the work: focused enough to use now, structured enough to grow when the next constraint appears.', core: 'The right product', note: 'shaped around reality' },
+    handover: { label: '03 / Handover', status: 'Owned by you →', title: 'Leave the system stronger than you found it.', copy: 'A clear handover includes working software, known limits and the decisions your team needs to keep moving with confidence.', core: 'Your next step', note: 'clear enough to own' }
+  };
+  const updateSystemMap = (step) => {
+    const stage = stages[step] || stages.discover;
+    systemMap.dataset.step = step;
+    systemMap.querySelector('[data-system-step-label]').textContent = stage.label;
+    systemMap.querySelector('[data-system-status]').textContent = stage.status;
+    systemMap.querySelector('[data-system-title]').textContent = stage.title;
+    systemMap.querySelector('[data-system-copy]').textContent = stage.copy;
+    systemMap.querySelector('[data-system-core]').textContent = stage.core;
+    systemMap.querySelector('[data-system-core-note]').textContent = stage.note;
+    systemMap.querySelectorAll('[data-system-control]').forEach((control) => {
+      const active = control.dataset.systemControl === step;
+      control.classList.toggle('is-active', active);
+      control.setAttribute('aria-selected', String(active));
+    });
+  };
+  systemMap.querySelectorAll('[data-system-control]').forEach((control) => control.addEventListener('click', () => updateSystemMap(control.dataset.systemControl)));
+}
 
 // 4. INTERSECTION OBSERVER FOR REVEALS & STAT COUNTERS
 if ('IntersectionObserver' in window) {
